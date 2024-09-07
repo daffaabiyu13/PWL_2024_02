@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\PageController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,9 +16,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view( 'welcome');
 });
-Route::get('/hello', function () {
-    return 'Hello World';
-});
+
 
 Route::get('/world', function () {
     return 'world';
@@ -62,5 +61,20 @@ Route::get('/user/profile', function () {
    Route::redirect('/here', '/there');
    Route::view('/welcome', 'welcome');
    Route::view('/welcome', 'welcome', ['name' => 'Taylor']);
-
    
+   
+   use App\Http\Controllers\WelcomeController;
+
+   Route::get('/hello', [WelcomeController::class, 'hello']);
+   Route::get('/', [PageController::class, 'index']);
+   Route::get('/about', [PageController::class, 'about']);
+   Route::get('/dinamis/{artikel}', [PageController::class, 'dinamis']);
+   Route::get('/dinamis', [PageController::class, 'dinamis']);
+
+   use App\Http\Controllers\PhotoController;
+   Route::resource('photos', PhotoController::class);
+
+
+
+
+

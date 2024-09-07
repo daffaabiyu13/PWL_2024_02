@@ -15,4 +15,5 @@ class UserProfileController extends Controller
         // Mengirim data pengguna ke view 'user.profile'
         return view('user.profile', compact('user'));
     }
-}
+    
+}   
